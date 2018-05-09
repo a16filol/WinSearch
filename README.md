@@ -7,7 +7,7 @@
 
 ### Applications that gets pulled are in located in
 ``%appdata%\Roaming\Microsoft\Windows\Start Menu\Programs``     
-``C:\ProgramData\Microsoft\Windows\Start Menu\Programs```  
+``C:\ProgramData\Microsoft\Windows\Start Menu\Programs``  
 
 ### Missing applications? 
 Add them by insert a shortcut in any of folders above and restart.  
