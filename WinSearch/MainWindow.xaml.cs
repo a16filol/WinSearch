@@ -104,10 +104,8 @@ namespace WinSearch
                 else if (apps.Count() <= index)
                 {
                     index = 0;
-                    ApplicationName.Text = apps[index]._name;
+                    ApplicationName.Text = (apps.Count() > 0 ? apps[index]._name : "No match");
                 }
-
-                System.Diagnostics.Debug.WriteLine(index);
             }));  
         }
 
