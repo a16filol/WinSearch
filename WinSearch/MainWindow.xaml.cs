@@ -25,6 +25,7 @@ namespace WinSearch
     {
         private Program _program;
         private bool InTray = true;
+        private int index = 0;
 
         public MainWindow()
         {
@@ -42,6 +43,7 @@ namespace WinSearch
                 };
 
             this.Hide();
+
 
             new Thread(Hooky).Start();
 
@@ -87,14 +89,44 @@ namespace WinSearch
            }));   
         }
 
+        public void NextSearch()
+        {
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                List<SmartSearch.Modules.Application> apps = _program.SearchForApplications(SearchBox.Text);
+                apps = apps.OrderBy(app => app._name).ToList();
+                index++;
+
+                if (ApplicationName != null && apps.Count() > index)
+                {
+                    ApplicationName.Text = apps[index]._name;
+                }
+                else if (apps.Count() <= index)
+                {
+                    index = 0;
+                    ApplicationName.Text = apps[index]._name;
+                }
+
+                System.Diagnostics.Debug.WriteLine(index);
+            }));  
+        }
+
         private void SearchChanged(object sender, TextChangedEventArgs e)
         {
             if (ApplicationName != null)
             {
                 // Sök efter appar som liknanar searchbox text
-                SmartSearch.Modules.Application app = _program.SearchForApplications(SearchBox.Text);
+                List<SmartSearch.Modules.Application> apps = _program.SearchForApplications(SearchBox.Text);
+                index = 0;
 
-                ApplicationName.Text = (app != null ? app._name : "No match");
+                if (apps.Count > 0)
+                {
+                    ApplicationName.Text = apps[index]._name;
+                }
+                else
+                {
+                    ApplicationName.Text = "No match";
+                }
 
                 if (SearchBox.Text == "")
                 {

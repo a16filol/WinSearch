@@ -29,14 +29,16 @@ namespace SmartSearch.Source
             }
         }
 
-        public Application SearchForApplications(string name)
+        public List<Application> SearchForApplications(string name)
         {
+            List<Application> results = new List<Application>();
+
             foreach (Application app in applications)
             {
-                if (app._name.ToLower().Contains(name.ToLower())) return app;
+                if (app._name.ToLower().Contains(name.ToLower())) results.Add(app);
             }
 
-            return null;
+            return results;
         }
     }
 }

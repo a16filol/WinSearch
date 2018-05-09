@@ -11,13 +11,13 @@
         BorderBrush="Black"
         Activated="App_Activated"
         Deactivated="App_Deactivated"
-        Title="MainWindow" Height="40.247" Width="600" ResizeMode="NoResize" Topmost="True" WindowState="Normal">
+        Title="MainWindow" Height="40.247" Width="831.587" ResizeMode="NoResize" Topmost="True" WindowState="Normal">
     <Window.Background>
         <SolidColorBrush Color="Black" Opacity=".6"/>
     </Window.Background>
     <Grid Margin="0,0,-0.247,-0.052">
         <Image Source="Resources/search.png" Margin="0,0,0,0.629" HorizontalAlignment="Left" Width="37" />
-        <TextBox Focusable="True" Name="SearchBox" TextWrapping="Wrap" Text="" FontSize="25" Foreground="White" Background="Transparent" Margin="42,0,268,-0.371" BorderThickness="0" TextChanged="SearchChanged" />
-        <TextBlock Name="ApplicationName" TextWrapping="Wrap" Text="" FontSize="25" Foreground="White" Opacity=".5" Background="Transparent" Margin="332,0,0,-0.371" />
+        <TextBox Focusable="True" Name="SearchBox" TextWrapping="Wrap" Text="" FontSize="25" Foreground="White" Background="Transparent" Margin="42,0,439.587,-0.371" BorderThickness="0" TextChanged="SearchChanged" />
+        <TextBlock Name="ApplicationName" TextWrapping="Wrap" Text="" FontSize="25" Foreground="White" Opacity=".5" Background="Transparent" Margin="392,0,0.587,-0.371" />
     </Grid>
 </Window>

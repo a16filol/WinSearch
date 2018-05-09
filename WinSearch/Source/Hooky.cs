@@ -56,6 +56,10 @@ namespace WinSearch.Source
             {
                 _window.RunProgram();
             }
+            else if (e.KeyCode == Keys.Tab)
+            {
+                _window.NextSearch();
+            }
         }
 
         private void key_KeyPress(object sender, KeyPressEventArgs e)

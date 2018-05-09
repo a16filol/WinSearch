@@ -31,13 +31,19 @@ namespace SmartSearch.Modules
         {
             // Get all aplications from path
             string basePath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + "\\Programs";
+            string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Microsoft\\Windows\\Start Menu\\Programs";
 
-            string[] apps = Directory.GetFiles(basePath, "*.*", SearchOption.AllDirectories);
+            // Combínde array of both paths
+            string[] baseApps = Directory.GetFiles(basePath, "*.*", SearchOption.AllDirectories);  
+            string[] roamingApps = Directory.GetFiles(appData, "*.*", SearchOption.AllDirectories);
+            string[] apps = baseApps.Concat(roamingApps).ToArray();
 
             foreach(String path in apps)
             {
                 applications.Add(new Application(path));
             }
+
+            applications = applications.GroupBy(app => app._name).Select(group => group.First()).ToList();
         }
 
         /**
