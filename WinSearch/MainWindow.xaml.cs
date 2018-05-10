@@ -110,6 +110,21 @@ namespace WinSearch
             }));  
         }
 
+        public void PreviousSearch()
+        {
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                List<SmartSearch.Modules.Application> apps = _program.SearchForApplications(SearchBox.Text);
+                apps = apps.OrderBy(app => app._name).ToList();
+                index = (index==0 ? apps.Count() - 1 : index - 1);
+
+                if (ApplicationName != null)
+                {
+                    ApplicationName.Text = apps[index]._name;
+                }
+            }));
+        }
+
         private void SearchChanged(object sender, TextChangedEventArgs e)
         {
             if (ApplicationName != null)

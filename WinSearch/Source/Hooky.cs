@@ -44,9 +44,12 @@ namespace WinSearch.Source
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Space)
             {
                 // Show search window
-                //_window.Show();
                 _window.ShowWindow();
 
+            }
+            else if (e.Modifiers == Keys.Shift && e.KeyCode == Keys.Tab)
+            {
+                _window.PreviousSearch();
             }
             else if (e.KeyCode == Keys.Escape)
             {
