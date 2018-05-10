@@ -19,7 +19,6 @@ namespace SmartSearch.Modules
             _blacklist.AddUserBlacklist();
 
             SetAllApplications();
-            applications = FilterBlacklistApplications(_blacklist.FullBlacklist);
         }
 
         /**
@@ -47,6 +46,7 @@ namespace SmartSearch.Modules
             }
 
             applications = applications.GroupBy(app => app._name).Select(group => group.First()).ToList();
+            applications = FilterBlacklistApplications(_blacklist.FullBlacklist);
         }
 
         /**
