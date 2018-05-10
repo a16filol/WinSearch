@@ -9,17 +9,16 @@ namespace SmartSearch.Source
 {
     class Program
     {
-        private List<Application> applications;
+        private FilterApplications applications;
 
         public Program()
         {
-            applications = new FilterApplications()
-                .GetApplications();
+            applications = new FilterApplications();
         }
 
         public void StartApplication(string name)
         {
-            foreach(Application app in applications)
+            foreach(Application app in applications.GetApplications())
             {
                 if(app._name == name)
                 {
@@ -33,12 +32,17 @@ namespace SmartSearch.Source
         {
             List<Application> results = new List<Application>();
 
-            foreach (Application app in applications)
+            foreach (Application app in applications.GetApplications())
             {
                 if (app._name.ToLower().Contains(name.ToLower())) results.Add(app);
             }
 
             return results;
+        }
+
+        public void UpdateApplications()
+        {
+            applications.SetAllApplications();
         }
     }
 }

@@ -69,6 +69,7 @@ namespace WinSearch
         {
             this.Dispatcher.BeginInvoke(new Action(() =>  
             {
+                _program.UpdateApplications();
                 this.Show();
                 InTray = false;
                 SearchBox.Focus();

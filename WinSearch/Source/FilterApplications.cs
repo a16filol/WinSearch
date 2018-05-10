@@ -27,8 +27,11 @@ namespace SmartSearch.Modules
          * 
          * return void
          **/
-        private void SetAllApplications()
+        public void SetAllApplications()
         {
+            // Set to empty array
+            applications = new List<Application>();
+
             // Get all aplications from path
             string basePath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + "\\Programs";
             string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Microsoft\\Windows\\Start Menu\\Programs";
